@@ -1,24 +1,52 @@
 var formEl = document.querySelector("#task-form");
 var tasksToDoEl = document.querySelector("#tasks-to-do");
 
-var createTaskHandler = function (event) {
+var taskFormHandler = function (event) {
 
     event.preventDefault();
     var taskNameInput = document.querySelector("input[name='task-name']").value;
     var taskTypeInput = document.querySelector("select[name='task-type']").value;
 
-    //CREATE LIST ITEM
+    //PACKEGE UP DATA AS AN 'OBJECT'
+    var taskDataObj = {
+        name: taskNameInput,
+        type: taskTypeInput
+    };
+
+    //SEND AS A 'ARGUMENT' TO => 'creatTaskEl'
+    createTaskEl(taskDataObj);
+
+};
+
+
+var createTaskEl = function (taskDataObj) {
+    // create list item
     var listItemEl = document.createElement("li");
     listItemEl.className = "task-item";
-    //CREATE 'DIV' TO HOLD 'TASK INFO' & ADD TO 'LIST ITEM'
+
+    // create div to hold task info and add to list item
     var taskInfoEl = document.createElement("div");
     taskInfoEl.className = "task-info";
-    //ATTACH HTML TO 'DIV'
-    taskInfoEl.innerHTML = "<h3 class='task-name'>" + taskNameInput + "</h3><span class='task-type'>" + taskTypeInput + "</span>";
+    taskInfoEl.innerHTML = "<h3 class='task-name'>" + taskDataObj.name + "</h3><span class='task-type'>" + taskDataObj.type + "</span>";
     listItemEl.appendChild(taskInfoEl);
 
-    //ADD ENTIRE 'LIST ITEM' TO LIST
+    // add entire list item to list
     tasksToDoEl.appendChild(listItemEl);
 };
 
-formEl.addEventListener("submit", createTaskHandler);
+console.log(taskFormHandler);
+
+formEl.addEventListener("submit", taskFormHandler);
+// #these notes go under "event.preventDefault();"
+    // //CREATE LIST ITEM
+    // var listItemEl = document.createElement("li");
+    // listItemEl.className = "task-item";
+    // //CREATE 'DIV' TO HOLD 'TASK INFO' & ADD TO 'LIST ITEM'
+    // var taskInfoEl = document.createElement("div");
+    // taskInfoEl.className = "task-info";
+    // //ATTACH HTML TO 'DIV'
+    // taskInfoEl.innerHTML = "<h3 class='task-name'>" + taskNameInput + "</h3><span class='task-type'>" + taskTypeInput + "</span>";
+    // listItemEl.appendChild(taskInfoEl);
+
+    // //ADD ENTIRE 'LIST ITEM' TO LIST
+    // tasksToDoEl.appendChild(listItemEl);
