@@ -232,7 +232,12 @@ var taskStatusChangeHandler = function (event) {
 
 var saveTasks = function () {
     localStorage.setItem("tasks", JSON.stringify(tasks));
-}
+
+    var loadTasks = function () {
+
+    }
+
+};
 
 pageContentEl.addEventListener("change", taskStatusChangeHandler);
 pageContentEl.addEventListener("click", taskButtonHandler);
