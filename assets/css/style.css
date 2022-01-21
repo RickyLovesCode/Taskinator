@@ -3,7 +3,7 @@
 }
 
 :root {
-  --primary: #44e9ff;
+  --primary: #ededed;
   --secondary: #497980;
   --tertiary: rgb(192, 246, 253);
   --grey: #333;
@@ -228,5 +228,4 @@ footer {
   .task-list-wrapper {
     flex-basis: 100%;
   }
-
 }
