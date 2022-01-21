@@ -235,8 +235,19 @@ var saveTasks = function () {
 };
 
 var loadTasks = function () {
+    var savedTasks = localStorage.getItem("tasks");
 
-    tasks = JSON.parse(tasks);
+    if (!savedTasks) {
+        return false;
+    }
+
+    savedTasks = JSON.parse(saveTasks);
+
+    //LOOP THROUGH 'savedTasks' ARRAY
+    for (var i = 0; i < savedTasks.length; i++) {
+        //PASS EACH TASK INTO 'createTaslEl()'
+        createTaskEl(savedTasks[i]);
+    }
 };
 
 pageContentEl.addEventListener("change", taskStatusChangeHandler);
